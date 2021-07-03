@@ -1,0 +1,31 @@
+
+
+<div class="mb-3">
+  <label for="filterText" class="form-label">Search todo</label>
+  <input type="text" [(ngModel)]="filterText" class="form-control" id="filterText" 
+  placeholder="please enter your Todo keyword">
+</div>
+<div *ngIf="filterText.length>2" class="alert alert-success">
+  You are searching: "{{filterText}}" 
+</div>
+
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>PERSON ID</th>
+      <th>ID</th>
+      <th>TODO</th>
+      <th>COMPLETED</th>
+    </tr>
+  </thead>
+
+
+  <tr *ngFor="let todo of todos | filterPipe:filterText">
+      <td>{{todo.userId}}</td>
+      <td>{{todo.id}}</td>
+      <td>{{todo.title}}</td>
+      <td>{{todo.completed}}</td>
+  </tr>
+</table>
+
